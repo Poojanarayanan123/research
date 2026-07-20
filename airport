@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+class Flight {
+    int flightNo;
+    String destination;
+    String departureTime;
+
+    Flight(int flightNo, String destination, String departureTime) {
+        this.flightNo = flightNo;
+        this.destination = destination;
+        this.departureTime = departureTime;
+    }
+
+    void display() {
+        System.out.println("Flight No: " + flightNo);
+        System.out.println("Destination: " + destination);
+        System.out.println("Departure Time: " + departureTime);
+        System.out.println("--------------------------");
+    }
+}
+
+public class AirportManagement {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        Flight[] flights = new Flight[3];
+
+        // Input flight details
+        for (int i = 0; i < flights.length; i++) {
+            System.out.println("Enter details for Flight " + (i + 1));
+
+            System.out.print("Flight Number: ");
+            int no = sc.nextInt();
+            sc.nextLine(); // Consume newline
+
+            System.out.print("Destination: ");
+            String destination = sc.nextLine();
+
+            System.out.print("Departure Time: ");
+            String time = sc.nextLine();
+
+            flights[i] = new Flight(no, destination, time);
+        }
+
+        // Display flight details
+        System.out.println("\nAirport Flight Schedule");
+        System.out.println("========================");
+
+        for (Flight flight : flights) {
+            flight.display();
+        }
+
+        sc.close();
+    }
+}
